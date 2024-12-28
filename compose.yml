@@ -17,3 +17,20 @@ services:
       test: "mysqladmin ping -h localhost"
       timeout: 20s
       retries: 10
+
+  migration:
+    build:
+      context: .
+      dockerfile: images/sqldef/Dockerfile
+    environment:
+      MYSQL_DATABASE: default
+      MYSQL_USER: root
+      MYSQL_PWD: password
+      MYSQL_HOST: db
+      MYSQL_TCP_PORT: 3306
+      SQL_FILE_TO_MIGRATE_APPLICATION_DATABASE: "/mysql/schema.sql"
+    volumes:
+      - ./database/sql:/mysql
+    depends_on:
+      db:
+        condition: service_healthy

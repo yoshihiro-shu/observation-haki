@@ -1,0 +1,16 @@
+version: "2"
+sql:
+- schema: "sql/schema.sql"
+  engine: "mysql"
+  queries: "sql/queries/"
+  gen:
+    go:
+      out: "repository/"
+      package: "repository"
+      emit_interface: true
+      emit_methods_with_db_argument: true
+      output_db_file_name: "queries.go"
+      output_models_file_name: "models.go"
+      overrides:
+      - go_type: "float32"
+        db_type: "float"
