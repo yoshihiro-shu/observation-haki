@@ -42,10 +42,9 @@ sequenceDiagram
     participant App as アプリケーション
     participant DB
 
-    Note over Slack: ボタンUI表示
-    Note right of User: - 問題なし(OK)<br>- 問題あり(NG)
 
-    User->>Slack: 判定ボタンをクリック
+    User->>Slack: Slackなどから、判定ボタンをクリック
+    Note right of User: - 問題なし(OK)<br>- 問題あり(NG)
     Slack->>App: ユーザーの判定結果を送信
     App->>DB: ユーザーの判定結果を保存
 
