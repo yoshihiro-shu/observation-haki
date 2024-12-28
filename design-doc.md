@@ -41,7 +41,6 @@ sequenceDiagram
     participant Slack
     participant App as アプリケーション
     participant DB
-    participant AI
 
     Note over Slack: ボタンUI表示
     Note right of User: - 問題なし(OK)<br>- 問題あり(NG)
