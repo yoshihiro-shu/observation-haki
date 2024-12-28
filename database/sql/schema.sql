@@ -3,9 +3,19 @@ CREATE TABLE logs (
   created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE log_formats (
+CREATE TABLE log_patterns (
   id VARCHAR(64) NOT NULL PRIMARY KEY,
-  format VARCHAR(255) NOT NULL,
+  log_id VARCHAR(64) NOT NULL,
+  log_pattern VARCHAR(255) NOT NULL,
   created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  CONSTRAINT `fk_log_formats_log_id` FOREIGN KEY (`id`) REFERENCES `logs` (`id`)
+  CONSTRAINT `fk_log_patterns_log_id` FOREIGN KEY (`log_id`) REFERENCES `logs` (`id`)
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE log_levels (
+  id VARCHAR(64) NOT NULL PRIMARY KEY,
+  log_id VARCHAR(64) NOT NULL,
+  log_level ENUM('TRACE', 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'FATAL', 'PANIC') NOT NULL,
+  created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  CONSTRAINT `fk_log_levels_log_id` FOREIGN KEY (`log_id`) REFERENCES `logs` (`id`)
+) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
+
