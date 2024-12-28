@@ -50,5 +50,5 @@ sequenceDiagram
     Slack->>App: ユーザーの判定結果を送信
     App->>DB: ユーザーの判定結果を保存
 
-    Note over DB: 保存されるデータ:<br>1. ログ本体<br>2. ログフォーマット<br>3. AI判定結果<br>4. ユーザー判定結果
+    Note over DB: 保存されるデータ:<br>1. ログ本体<br>2. ログフォーマット<br>3. ユーザー判定結果
 ```
